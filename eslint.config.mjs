@@ -4,6 +4,7 @@ import pluginReact from "eslint-plugin-react";
 import jestPlugin from "eslint-plugin-jest";
 import testingLibraryPlugin from "eslint-plugin-testing-library";
 import { defineConfig } from "eslint/config";
+import pluginSecurity from "eslint-plugin-security";
 
 export default defineConfig([
     {
@@ -51,5 +52,14 @@ export default defineConfig([
         jest: true,
       },
     },
+    
   },
+  {
+  plugins: {
+    security: pluginSecurity,
+  },
+  rules: {
+    "security/detect-eval-with-expression": "error",
+  },
+},
 ]);
