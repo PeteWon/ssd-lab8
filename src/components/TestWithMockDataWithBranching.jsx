@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const TestWithMockDataWithBranching = ({
   data,
@@ -13,12 +14,10 @@ const TestWithMockDataWithBranching = ({
             <li key={item.id}>
               {item.id}
               {item.first_name},{item.last_name},
-              <a
-                onClick={() => {
+              <a onClick={() => {
                   console.log("email link clicked");
                   handleClick();
-                }}
-              >
+                }}>
                 {item.email}
               </a>
               {item.age > 50 ? "Senior" : "Not senior"}
@@ -34,6 +33,20 @@ const TestWithMockDataWithBranching = ({
       )}
     </div>
   );
+};
+
+TestWithMockDataWithBranching.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      first_name: PropTypes.string,
+      last_name: PropTypes.string,
+      email: PropTypes.string,
+      age: PropTypes.number,
+    })
+  ).isRequired,
+  displayUnorderedList: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default TestWithMockDataWithBranching;

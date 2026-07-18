@@ -8,11 +8,10 @@ const TestingAPICalls = () => {
       setData(data);
     });
   });
-
   return (
     <div>
       {data.map((item) => (
-        <div>{item.name}</div>
+        <div key={item.id}>{item.name}</div>
       ))}
     </div>
   );
